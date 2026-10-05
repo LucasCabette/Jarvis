@@ -1,10 +1,15 @@
-﻿using Google.GenAI;
+﻿using System.Windows.Forms;
+using Jarvis.UI;
 
-var client = new Client();
+namespace Jarvis;
 
-var response = await client.Models.GenerateContentAsync(
-    model:"gemini-3.8-flash",
-    contents: Console.ReadLine()
-);
+internal static class Program
+{
+    [STAThread]
+    private static void Main()
+    {
+        ApplicationConfiguration.Initialize();
 
-Console.WriteLine(response.Candidates[0].Content.Parts[0].Text);
+        Application.Run(new MainForm());
+    }
+}
